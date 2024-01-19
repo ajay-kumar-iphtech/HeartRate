@@ -14,7 +14,7 @@ class HeartRateView: UIView {
     let recentReadings = ["Today (14:00)", "Today (13:00)"]
     let recentValues = [125, 110]
     let avgHeartRate = 57
-    let bpmRange = "40-189 bpm"
+    let bpmRange = "40-189"
     let dateRange = "10 - 17 Sep 2022"
     
     override func draw(_ rect: CGRect) {
@@ -61,16 +61,52 @@ class HeartRateView: UIView {
         let fullStatsSize = fullStats.size(withAttributes: fullStatsAttributes)
         let fullStatsX = width - margin - fullStatsSize.width
         let fullStatsY = margin
-        fullStats.draw(at: CGPoint(x: fullStatsX, y: fullStatsY), withAttributes: fullStatsAttributes)
+        let backgroundViewX = fullStatsX - 2  // Adjust the spacing as needed
+        let backgroundViewY = fullStatsY + 2   // Adjust the spacing as needed
+        let backgroundViewWidth = fullStatsSize.width + 20  // Adjust the spacing as needed
+        let backgroundViewHeight = fullStatsSize.height + 10  // Adjust the spacing as needed
+
+        // Create a rounded rectangle path
+        let backgroundViewRect = CGRect(x: backgroundViewX, y: backgroundViewY, width: backgroundViewWidth, height: backgroundViewHeight)
+        let backgroundViewPath = UIBezierPath(roundedRect: backgroundViewRect, cornerRadius: 10.0)  // Adjust the corner radius as needed
+
+        // Set the border attributes
+        UIColor.lightGray.setStroke()  // Change the color as needed
+        backgroundViewPath.lineWidth = 1.0  // Adjust the border width as needed
+
+        // Draw the border
+        backgroundViewPath.stroke()
+
+        // Draw Full stats text on top of the rounded background view
+        fullStats.draw(at: CGPoint(x: fullStatsX + 10, y: fullStatsY + 5), withAttributes: fullStatsAttributes)
+
+
         
         // Draw range
-        let range = "\(bpmRange)\n\(dateRange)"
-        let rangeFont = UIFont.systemFont(ofSize: 20, weight: .bold)
+        let range = "\(bpmRange)"
+        let rangeFont = UIFont.systemFont(ofSize: 40, weight: .bold)
         let rangeAttributes = [NSAttributedString.Key.font: rangeFont]
         let rangeSize = range.size(withAttributes: rangeAttributes)
         let rangeX = margin
         let rangeY = titleY + titleSize.height + margin
         range.draw(at: CGPoint(x: rangeX, y: rangeY), withAttributes: rangeAttributes)
+        
+        
+        let bpm = "bpm"
+        let bpmFont = UIFont.systemFont(ofSize: 20, weight: .light)
+        let bpmAttributes = [NSAttributedString.Key.font: bpmFont]
+        let bpmSize = range.size(withAttributes: bpmAttributes)
+        let bpmX = margin
+        let bpmY = titleY + titleSize.height + margin
+        bpm.draw(at: CGPoint(x: bpmX + 150, y: bpmY + 10), withAttributes: bpmAttributes)
+        
+        let date = "10 - 17 Sep 2022"
+        let dateFont = UIFont.systemFont(ofSize: 20, weight: .light)
+        let dateAttributes = [NSAttributedString.Key.font: dateFont]
+        let dateSize = range.size(withAttributes: dateAttributes)
+        let dateX = margin
+        let dateY = titleY + titleSize.height + margin
+        date.draw(at: CGPoint(x: dateX, y: dateY + 50), withAttributes: dateAttributes)
         
         
         let day = "Today (14:00)"
