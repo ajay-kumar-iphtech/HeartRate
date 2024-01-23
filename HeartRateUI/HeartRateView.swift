@@ -61,18 +61,18 @@ class HeartRateView: UIView {
         let fullStatsSize = fullStats.size(withAttributes: fullStatsAttributes)
         let fullStatsX = width - margin - fullStatsSize.width
         let fullStatsY = margin
-        let backgroundViewX = fullStatsX - 2  // Adjust the spacing as needed
-        let backgroundViewY = fullStatsY + 2   // Adjust the spacing as needed
-        let backgroundViewWidth = fullStatsSize.width + 20  // Adjust the spacing as needed
-        let backgroundViewHeight = fullStatsSize.height + 10  // Adjust the spacing as needed
-
+        let backgroundViewX = fullStatsX - 2
+        let backgroundViewY = fullStatsY + 2
+        let backgroundViewWidth = fullStatsSize.width + 20
+        let backgroundViewHeight = fullStatsSize.height + 10
+        
         // Create a rounded rectangle path
         let backgroundViewRect = CGRect(x: backgroundViewX, y: backgroundViewY, width: backgroundViewWidth, height: backgroundViewHeight)
-        let backgroundViewPath = UIBezierPath(roundedRect: backgroundViewRect, cornerRadius: 10.0)  // Adjust the corner radius as needed
+        let backgroundViewPath = UIBezierPath(roundedRect: backgroundViewRect, cornerRadius: 10.0)
 
         // Set the border attributes
-        UIColor.lightGray.setStroke()  // Change the color as needed
-        backgroundViewPath.lineWidth = 1.0  // Adjust the border width as needed
+        UIColor.lightGray.setStroke()
+        backgroundViewPath.lineWidth = 1.0
 
         // Draw the border
         backgroundViewPath.stroke()
@@ -167,7 +167,7 @@ class HeartRateView: UIView {
             let y = barY + barMaxHeight - CGFloat(heartRateData[i] - minHeartRate) / CGFloat(maxHeartRate - minHeartRate) * barMaxHeight
 
             // Convert hex color to UIColor
-            let hexColor = 0xfa576c  // Replace with your hex color value
+            let hexColor = 0xfa576c
             let uiColor = UIColor(
                 red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
                 green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
@@ -176,7 +176,7 @@ class HeartRateView: UIView {
             )
 
             // Draw rounded rectangle bar with hex color
-            let narrowerBarWidth = barWidth * 0.7 // Adjust the factor (0.8) as needed
+            let narrowerBarWidth = barWidth * 0.7
             let bar = UIBezierPath(roundedRect: CGRect(x: x + (barWidth - narrowerBarWidth) / 2, y: y - 70, width: narrowerBarWidth, height: barMaxHeight - y + barY), cornerRadius: 20.0)
             uiColor.setFill()
             bar.fill()
