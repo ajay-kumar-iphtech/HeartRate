@@ -19,6 +19,17 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="066-EU-UUs" customClass="HeartRateView" customModule="HeartRateUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="89" width="361" height="679"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meR-VM-OEL">
+                                        <rect key="frame" x="-8" y="296" width="85" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Avg. 57">
+                                            <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvL-dj-fht">
@@ -36,6 +47,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="avgButton" destination="meR-VM-OEL" id="J8t-HP-B5p"/>
                         <outlet property="graphView" destination="066-EU-UUs" id="fSl-2q-9fU"/>
                         <outlet property="leftBottomView" destination="yvL-dj-fht" id="bwl-cE-oNW"/>
                         <outlet property="rightBottomView" destination="w3O-jQ-F3O" id="BmX-HR-jOg"/>
